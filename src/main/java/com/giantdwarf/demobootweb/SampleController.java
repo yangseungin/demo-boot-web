@@ -1,10 +1,9 @@
 package com.giantdwarf.demobootweb;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.stream.Stream;
 
 @RestController
 public class SampleController {
@@ -20,6 +19,12 @@ public class SampleController {
     @GetMapping("/hello")
     public String hello(@RequestParam("id") Person person){
         return "hello " + person.getName();
+    }
+
+    @GetMapping("message")
+//    @ResponseBody @RestController를 사용중이라 모두 붙어있다고 생각하면 됨
+    public String message(@RequestBody String body){
+        return body;
     }
 
 }
